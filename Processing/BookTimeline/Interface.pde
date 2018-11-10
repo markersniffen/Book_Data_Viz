@@ -85,15 +85,6 @@ class Interface {
     fill(colInterface);
   }
   
-  void drawData(float x_, float y_, float scale_, float col_) {
-    // AXIS //
-    // X
-    float x = map(x_, 
-    
-    
-    
-  }
-  
   void calcMouseDif() {
     mouseDifLeft = left - mouseX;
     mouseDifRight = right - mouseX;

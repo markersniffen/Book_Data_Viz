@@ -2,7 +2,7 @@
 Interface myInterface;
 Data myData;
 
-String filename = "C:\\Users\\markersniffen\\Google Drive\\Projects\\BookTimeline\\Database\\books_Mark Sniffen.csv";
+String filename = "..\\..\\Database\\books_Mark Sniffen.csv";
 
 boolean mouseLock;
 float scroll;
@@ -17,17 +17,16 @@ void setup() {
   myInterface = new Interface(100);
   myInterface.loadTheFonts();
   myInterface.initCenter();
-
+  
   myData = new Data();
-
-
   myData.loadData("Mark's Data!", filename);
-  myData.addDimension("Title", "x");
-  myData.addDimension("ISBN", "y");
-  myData.addDimension("Date Published", "col");
+  myData.addHeaders();
+  
+  myData.addDatapoints();
+  
 
-  myData.addDatapoints("Date Published", 0);
-  myData.addDatapoints("Fiction", 1);
+  //myData.printTest();
+
 }
 
 void draw() {
@@ -35,9 +34,15 @@ void draw() {
   myInterface.drawBackground();
   myInterface.drawTestDataBox();
 
-  myData.drawData(0, myInterface.left, myInterface.right);
+
 
   myInterface.drawHud();
+}
+
+void displaySomething() {
+  for (int i = 0; i < myData.data.size(); i++) {
+    println(myData.data.get(i).strVals.size());
+  }
 }
 
 
@@ -75,6 +80,8 @@ void mouseWheel(MouseEvent event) {
 void keyPressed() {
   if (keyCode == SHIFT) {
     keyShift = true;
+  } else if (keyCode == UP) {
+    myData.printDatapoints();
   }
 }
 
