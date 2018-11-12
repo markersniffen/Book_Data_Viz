@@ -1,25 +1,46 @@
-class Datapoint { // like my old 'book' class
+class Datapoint { 
   
-  ArrayList<String> strVals = new ArrayList<String>();
-  ArrayList<Integer> intVals = new ArrayList<Integer>();
+  final int VALUE_TYPE_INT = 0;
+  final int VALUE_TYPE_STRING = 1;
   
-  Datapoint() {
-    ArrayList<String> strVals = new ArrayList<String>();
-    ArrayList<Integer> intVals = new ArrayList<Integer>();
+  String name;
+  String value;
+  
+  Datapoint(String columnName_) {
+    name = columnName_;
   }
+  
+  public String returnVal() {
+    return value;
+  }
+  
+  public int getType() {
+    return 0;
+  }
+}
 
-  void strData(String input_) {
-    strVals.add(input_);
+class StringValue extends Datapoint {
+  
+  StringValue(String colName, String value_) {
+    super(colName);
+    this.value = value_;
   }
   
-  void intData(int input_) {
-    intVals.add(input_);
+  int getType() {
+    return super.VALUE_TYPE_STRING;
   }
-  
+}
 
+class IntValue extends Datapoint {
   
-  
-  
-  
-  
+  public IntValue(String colName, String value_) {
+    super(colName);
+    this.value = value_;
+  }
+  Integer returnVal() {
+    return Integer.valueOf(value);
+  }
+  int getType() {
+    return super.VALUE_TYPE_INT;
+  }
 }

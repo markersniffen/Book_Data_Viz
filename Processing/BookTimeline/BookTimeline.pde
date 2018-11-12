@@ -20,12 +20,8 @@ void setup() {
   
   myData = new Data();
   myData.loadData("Mark's Data!", filename);
-  myData.addHeaders();
-  
   myData.addDatapoints();
-  
-
-  //myData.printTest();
+  myData.printDatapoints();
 
 }
 
@@ -39,11 +35,6 @@ void draw() {
   myInterface.drawHud();
 }
 
-void displaySomething() {
-  for (int i = 0; i < myData.data.size(); i++) {
-    println(myData.data.get(i).strVals.size());
-  }
-}
 
 
 
@@ -81,7 +72,7 @@ void keyPressed() {
   if (keyCode == SHIFT) {
     keyShift = true;
   } else if (keyCode == UP) {
-    myData.printDatapoints();
+    //myData.printDatapoints();
   }
 }
 
