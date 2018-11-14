@@ -7,6 +7,8 @@ class Interface {
   color pressedFill = color(250, 0, 0);
   float margin = 100;
   float weightInterface = 1;
+  
+  
   String interfaceTitle = "WELCOME!";
   
 
@@ -112,11 +114,6 @@ class Interface {
     left += scroll * (leftDist * .01);
     right += scroll * (rightDist * .01);
   }
-  
-  
-  
-  
-  
   
   void quit() {
     println("QUITTING...");

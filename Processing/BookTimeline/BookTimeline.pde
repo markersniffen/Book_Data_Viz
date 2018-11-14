@@ -1,6 +1,7 @@
 // CLASSES //
 Interface myInterface;
 Data myData;
+DataInterface dataInterface;
 
 String filename = "..\\..\\Database\\books_Mark Sniffen.csv";
 
@@ -14,15 +15,26 @@ void settings() {
 }
 
 void setup() {
-  myInterface = new Interface(100);
+  myInterface = new Interface(200);
   myInterface.loadTheFonts();
   myInterface.initCenter();
   
   myData = new Data();
   myData.loadData("Mark's Data!", filename);
   myData.addDatapoints();
-  myData.printDatapoints();
+  
+  myData.addDim("X Dimension");
+  myData.addDim("Y Dimension");
+  myData.addDim("Z Dimension");
+  myData.addDim("SIZE Dimension");
+  myData.addDim("COLOR Dimension");
+  
+  dataInterface = new DataInterface(myData.getColumnList(), myData.getDimList());
 
+ 
+
+
+  
 }
 
 void draw() {
@@ -33,6 +45,7 @@ void draw() {
 
 
   myInterface.drawHud();
+  dataInterface.display();
 }
 
 
@@ -46,6 +59,9 @@ void mousePressed() {
     mouseLock = true;
   }
   myInterface.calcMouseDif();
+  for (Button b : dataInterface.buttons) {
+    b.buttonPressed();
+  }
 }
 
 void mouseDragged() {
@@ -72,7 +88,7 @@ void keyPressed() {
   if (keyCode == SHIFT) {
     keyShift = true;
   } else if (keyCode == UP) {
-    //myData.printDatapoints();
+    dataInterface.flip();
   }
 }
 
